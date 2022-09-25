@@ -1,5 +1,4 @@
 import { Box, Stack, Typography, Button } from "@mui/material";
-
 import HeroBannerImage from "../assets/images/banner.png";
 
 const HeroBanner = () => {
@@ -18,7 +17,7 @@ const HeroBanner = () => {
       }}
     >
       <Typography color="#FF2625" fontWeight="600" fontSize="26px">
-        Fitness Club
+        Team Big
       </Typography>
       <Typography
         fontWeight="700"
@@ -31,10 +30,10 @@ const HeroBanner = () => {
           },
         }}
       >
-        Sweat, Smile <br /> and Repeat
+        Lift, Laugh, <br /> Love
       </Typography>
       <Typography fontSize="22px" lineHeight="35px" mb={4}>
-        Check out the most effective exercises
+        Discover over 1,000 effective exercises
       </Typography>
       <Button
         variant="contained"
