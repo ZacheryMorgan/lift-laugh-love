@@ -1,15 +1,67 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
-const SearchExercises = () => {
+import { apiData, bodyPartsData } from "../utils/apiData";
+import DropdownExercises from "./DropdownExercises";
+
+const SearchExercises = ({ setExercises }) => {
   const [search, setSearch] = useState("");
+  const [localApiData, setLocalApiData] = useState([]);
+
+  const [bodyPartSearch, setBodyPartSearch] = useState("");
+  const [equipmentSearch, setEquipmentSearch] = useState("");
+  const [targetSearch, setTargetSearch] = useState("");
+
+  useEffect(() => {
+    setLocalApiData(apiData);
+  }, []);
 
   const handleSearch = async () => {
-    if (!search) {
+    if (!search && !bodyPartSearch && !targetSearch && !equipmentSearch) {
       return;
     }
+    let searchedExercises = "";
 
-    // const exerciseData = await fetchData()
+    if (bodyPartSearch && equipmentSearch && targetSearch) {
+      searchedExercises = localApiData.filter(
+        (exercise) =>
+          exercise.bodyPart.toLowerCase().includes(bodyPartSearch) &&
+          exercise.equipment.toLowerCase().includes(equipmentSearch) &&
+          exercise.target.toLowerCase().includes(targetSearch)
+      );
+    } else if (targetSearch && equipmentSearch) {
+      searchedExercises = localApiData.filter(
+        (exercise) =>
+          exercise.target.toLowerCase().includes(targetSearch) &&
+          exercise.equipment.toLowerCase().includes(equipmentSearch)
+      );
+    } else if (bodyPartSearch && equipmentSearch) {
+      searchedExercises = localApiData.filter(
+        (exercise) =>
+          exercise.bodyPart.toLowerCase().includes(bodyPartSearch) &&
+          exercise.equipment.toLowerCase().includes(equipmentSearch)
+      );
+    } else if (bodyPartSearch && targetSearch) {
+      searchedExercises = localApiData.filter(
+        (exercise) =>
+          exercise.bodyPart.toLowerCase().includes(bodyPartSearch) &&
+          exercise.target.toLowerCase().includes(targetSearch)
+      );
+      console.log("all");
+    } else {
+      searchedExercises = localApiData.filter(
+        (exercise) =>
+          (exercise.name.toLowerCase().includes(search) && search) ||
+          (exercise.target.toLowerCase().includes(targetSearch) &&
+            targetSearch) ||
+          (exercise.equipment.toLowerCase().includes(equipmentSearch) &&
+            equipmentSearch) ||
+          (exercise.bodyPart.toLowerCase().includes(bodyPartSearch) &&
+            bodyPartSearch)
+      );
+    }
+    setSearch("");
+    setExercises(searchedExercises);
   };
 
   return (
@@ -27,6 +79,12 @@ const SearchExercises = () => {
       >
         Awesome Exercises You <br /> Should Know
       </Typography>
+      <DropdownExercises
+        exercises={localApiData}
+        setBodyPartSearch={setBodyPartSearch}
+        setEquipmentSearch={setEquipmentSearch}
+        setTargetSearch={setTargetSearch}
+      />
       <Box position="relative" mb="72px">
         <TextField
           height="76px"
@@ -68,6 +126,13 @@ const SearchExercises = () => {
           Search
         </Button>
       </Box>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          p: "20px",
+        }}
+      ></Box>
     </Stack>
   );
 };
