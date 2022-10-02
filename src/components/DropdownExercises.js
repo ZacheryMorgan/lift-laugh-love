@@ -1,4 +1,10 @@
-import { InputLabel, MenuItem, FormControl, Select } from "@mui/material";
+import {
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Button,
+} from "@mui/material";
 import { useState, useEffect } from "react";
 
 const DropdownExercises = ({
@@ -6,6 +12,7 @@ const DropdownExercises = ({
   setBodyPartSearch,
   setEquipmentSearch,
   setTargetSearch,
+  setExercises,
 }) => {
   const bodyPartArray = [
     ...new Set(exercises.map((exercise) => exercise.bodyPart)),
@@ -35,6 +42,13 @@ const DropdownExercises = ({
     }
   };
 
+  const handleClick = () => {
+    setSelectedBodyPart("");
+    setSelectedEquipment("");
+    setSelectedTarget("");
+    setExercises(exercises);
+  };
+
   useEffect(() => {
     const setAllSearches = () => {
       setBodyPartSearch(selectedBodyPart);
@@ -45,58 +59,81 @@ const DropdownExercises = ({
   }, [selectedBodyPart, selectedEquipment, selectedTarget]);
 
   return (
-    <div>
-      <FormControl fullWidth>
-        <InputLabel id="bodypart-select-label">Body Part</InputLabel>
-        <Select
-          labelId="bodypart-select-label"
-          id="bodypart-select"
-          value={selectedBodyPart}
-          label="Age"
-          onChange={handleChange}
-          name="bodyPart"
-        >
-          {bodyPartArray.map((bodyPart, index) => (
-            <MenuItem key={index} value={bodyPart}>
-              {bodyPart}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel id="target-select-label">Target</InputLabel>
-        <Select
-          labelId="target-select-label"
-          id="target-select"
-          value={selectedTarget}
-          label="Age"
-          onChange={handleChange}
-          name="target"
-        >
-          {targetArray.map((target, index) => (
-            <MenuItem key={index} value={target}>
-              {target}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel id="equipment-select-label">Equipment</InputLabel>
-        <Select
-          labelId="equipment-select-label"
-          id="equipment-select"
-          value={selectedEquipment}
-          label="Age"
-          onChange={handleChange}
-          name="equipment"
-        >
-          {equipmentArray.map((equipment, index) => (
-            <MenuItem key={index} value={equipment}>
-              {equipment}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "80%",
+        marginBottom: "45px",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "80%",
+          marginBottom: "45px",
+        }}
+      >
+        <FormControl fullWidth sx={{ marginRight: "10px" }}>
+          <InputLabel id="bodypart-select-label">Body Part</InputLabel>
+          <Select
+            labelId="bodypart-select-label"
+            id="bodypart-select"
+            value={selectedBodyPart}
+            label="Body Part"
+            onChange={handleChange}
+            name="bodyPart"
+          >
+            <MenuItem value="">none</MenuItem>
+            {bodyPartArray.map((bodyPart, index) => (
+              <MenuItem key={index} value={bodyPart}>
+                {bodyPart}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl fullWidth sx={{ marginRight: "10px" }}>
+          <InputLabel id="target-select-label">Target</InputLabel>
+          <Select
+            labelId="target-select-label"
+            id="target-select"
+            value={selectedTarget}
+            label="Target"
+            onChange={handleChange}
+            name="target"
+          >
+            <MenuItem value="">none</MenuItem>
+            {targetArray.map((target, index) => (
+              <MenuItem key={index} value={target}>
+                {target}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel id="equipment-select-label">Equipment</InputLabel>
+          <Select
+            labelId="equipment-select-label"
+            id="equipment-select"
+            value={selectedEquipment}
+            label="Equipment"
+            onChange={handleChange}
+            name="equipment"
+          >
+            <MenuItem value="">none</MenuItem>
+            {equipmentArray.map((equipment, index) => (
+              <MenuItem key={index} value={equipment}>
+                {equipment}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+      <Button onClick={handleClick} variant="contained">
+        Clear Filters
+      </Button>
     </div>
   );
 };

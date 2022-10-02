@@ -8,7 +8,6 @@ const Navbar = () => {
   return (
     <Stack
       direction="row"
-      // justifyContent="space-around"
       px="20px"
       sx={{
         gap: {
@@ -19,7 +18,6 @@ const Navbar = () => {
           sm: "32px",
           xs: "20px",
         },
-        // justifyContent: "none",
       }}
     >
       <Link to="/">
@@ -45,6 +43,13 @@ const Navbar = () => {
           style={{ textDecoration: "none", color: "#3a1212" }}
         >
           Exercises
+        </a>
+        <a
+          href="#search"
+          scrollBehavior="smooth"
+          style={{ textDecoration: "none", color: "#3a1212" }}
+        >
+          Search
         </a>
       </Stack>
     </Stack>

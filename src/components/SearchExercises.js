@@ -18,6 +18,7 @@ const SearchExercises = ({ setExercises }) => {
 
   const handleSearch = async () => {
     if (!search && !bodyPartSearch && !targetSearch && !equipmentSearch) {
+      setExercises(localApiData);
       return;
     }
     let searchedExercises = "";
@@ -47,7 +48,6 @@ const SearchExercises = ({ setExercises }) => {
           exercise.bodyPart.toLowerCase().includes(bodyPartSearch) &&
           exercise.target.toLowerCase().includes(targetSearch)
       );
-      console.log("all");
     } else {
       searchedExercises = localApiData.filter(
         (exercise) =>
@@ -65,7 +65,13 @@ const SearchExercises = ({ setExercises }) => {
   };
 
   return (
-    <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
+    <Stack
+      alignItems="center"
+      mt="37px"
+      justifyContent="center"
+      p="20px"
+      id="search"
+    >
       <Typography
         fontWeight="700"
         mb="50px"
@@ -77,15 +83,30 @@ const SearchExercises = ({ setExercises }) => {
           },
         }}
       >
-        Awesome Exercises You <br /> Should Know
+        Search Exercises by Any Combination of Body Part, Target Muscle, or
+        Equipment Required.
       </Typography>
       <DropdownExercises
         exercises={localApiData}
         setBodyPartSearch={setBodyPartSearch}
         setEquipmentSearch={setEquipmentSearch}
         setTargetSearch={setTargetSearch}
+        setExercises={setExercises}
       />
-      <Box position="relative" mb="72px">
+      <Box position="relative" mb="72px" mt="25px">
+        <Typography
+          fontWeight="600"
+          mb="40px"
+          textAlign="center"
+          sx={{
+            fontSize: {
+              lg: "35px",
+              xs: "24px",
+            },
+          }}
+        >
+          Or Search Exercises by Name
+        </Typography>
         <TextField
           height="76px"
           value={search}
