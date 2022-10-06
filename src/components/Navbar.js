@@ -39,17 +39,17 @@ const Navbar = () => {
           Home
         </Link>
         <a
-          href="#exercises"
-          style={{ textDecoration: "none", color: "#3a1212" }}
-        >
-          Exercises
-        </a>
-        <a
           href="#search"
           scrollBehavior="smooth"
           style={{ textDecoration: "none", color: "#3a1212" }}
         >
           Search
+        </a>
+        <a
+          href="#exercises"
+          style={{ textDecoration: "none", color: "#3a1212" }}
+        >
+          Exercises
         </a>
       </Stack>
     </Stack>
