@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap');
+
 body {
-  font-family: 'Josefin Sans';
+  font-family: 'Roboto';
   background-color: #FFFAFB;
+  padding: 5px 20px
 }
 
 * {
@@ -108,8 +111,8 @@ body {
 
 @media screen and (max-width:1200px) {
   .detail-image {
-    width: 300px;
-    height: 300px;
+    width: 420px;
+    height: 420px;
   }
 
 
@@ -135,16 +138,19 @@ body {
     height: 300px;
   }
 
+
 }
+
+@media screen and (max-width:900px) {
+  .detail-image {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 
 @media screen and (max-width:400px) {
   .exercise-card {
     width: 280px;
   }
-}
-
-/* HORIZONTAL SCROLL BULLSHIT */
-
-.react-horizontal-scrolling-menu--wrapper {
-  overflow: scroll
 }
