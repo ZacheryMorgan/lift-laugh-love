@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import ExerciseCard from "./ExerciseCard";
-import { exerciseOptions, fetchData } from "../utils/fetchData";
 
 import { apiData } from "../utils/apiData";
 
@@ -48,7 +47,7 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
       }}
     >
       <Typography variant="h3" mb="46px">
-        Showing Results
+        Search Results
       </Typography>
       <Stack
         direction="row"
@@ -65,8 +64,8 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
           <ExerciseCard key={index} exercise={exercise} />
         ))}
       </Stack>
-      <Stack mt="100px" alignItems="center">
-        {exercises.length > 9 && (
+      <Stack alignItems="center">
+        {exercises.length > 9 ? (
           <Pagination
             color="standard"
             shape="rounded"
@@ -76,6 +75,13 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
             onChange={paginate}
             size="large"
           />
+        ) : (
+          exercises.length === 0 && (
+            <Typography variant="h4">
+              There are no exercises in this database for your selected
+              searches.
+            </Typography>
+          )
         )}
       </Stack>
     </Box>

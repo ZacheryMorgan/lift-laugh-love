@@ -16,6 +16,10 @@ const SearchExercises = ({ setExercises }) => {
     setLocalApiData(apiData);
   }, []);
 
+  useEffect(() => {
+    handleSearch();
+  }, [bodyPartSearch, equipmentSearch, targetSearch]);
+
   const handleSearch = async () => {
     if (!search && !bodyPartSearch && !targetSearch && !equipmentSearch) {
       setExercises(localApiData);
@@ -93,7 +97,8 @@ const SearchExercises = ({ setExercises }) => {
         setTargetSearch={setTargetSearch}
         setExercises={setExercises}
       />
-      <Box position="relative" mb="72px" mt="25px">
+      {/* Name search input and button */}
+      {/* <Box position="relative" mb="72px" mt="25px">
         <Typography
           fontWeight="600"
           mb="40px"
@@ -146,14 +151,7 @@ const SearchExercises = ({ setExercises }) => {
         >
           Search
         </Button>
-      </Box>
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          p: "20px",
-        }}
-      ></Box>
+      </Box> */}
     </Stack>
   );
 };
