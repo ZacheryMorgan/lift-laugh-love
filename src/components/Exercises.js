@@ -55,8 +55,8 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
         justifyContent="center"
         sx={{
           gap: {
-            lg: "110px",
             xs: "50px",
+            lg: "110px",
           },
         }}
       >
