@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
-import { apiData, bodyPartsData } from "../utils/apiData";
+import { apiData } from "../utils/apiData";
 import DropdownExercises from "./DropdownExercises";
 
 const SearchExercises = ({ setExercises }) => {
-  const [search, setSearch] = useState("");
   const [localApiData, setLocalApiData] = useState([]);
 
   const [bodyPartSearch, setBodyPartSearch] = useState("");
@@ -21,7 +20,7 @@ const SearchExercises = ({ setExercises }) => {
   }, [bodyPartSearch, equipmentSearch, targetSearch]);
 
   const handleSearch = async () => {
-    if (!search && !bodyPartSearch && !targetSearch && !equipmentSearch) {
+    if (!bodyPartSearch && !targetSearch && !equipmentSearch) {
       setExercises(localApiData);
       return;
     }
@@ -55,7 +54,6 @@ const SearchExercises = ({ setExercises }) => {
     } else {
       searchedExercises = localApiData.filter(
         (exercise) =>
-          (exercise.name.toLowerCase().includes(search) && search) ||
           (exercise.target.toLowerCase().includes(targetSearch) &&
             targetSearch) ||
           (exercise.equipment.toLowerCase().includes(equipmentSearch) &&
@@ -64,7 +62,6 @@ const SearchExercises = ({ setExercises }) => {
             bodyPartSearch)
       );
     }
-    setSearch("");
     setExercises(searchedExercises);
   };
 
@@ -97,61 +94,6 @@ const SearchExercises = ({ setExercises }) => {
         setTargetSearch={setTargetSearch}
         setExercises={setExercises}
       />
-      {/* Name search input and button */}
-      {/* <Box position="relative" mb="72px" mt="25px">
-        <Typography
-          fontWeight="600"
-          mb="40px"
-          textAlign="center"
-          sx={{
-            fontSize: {
-              lg: "35px",
-              xs: "24px",
-            },
-          }}
-        >
-          Or Search Exercises by Name
-        </Typography>
-        <TextField
-          height="76px"
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value.toLowerCase());
-          }}
-          placeholder="Search Exercises"
-          type="text"
-          sx={{
-            bgcolor: "#fff",
-            input: { fontWeight: "700", border: "none" },
-            width: {
-              lg: "850px",
-              xs: "350px",
-            },
-          }}
-        />
-        <Button
-          className="search-btn"
-          onClick={handleSearch}
-          sx={{
-            position: "absolute",
-            right: "0",
-            bgcolor: "#ff2625",
-            color: "#fff",
-            textTransform: "none",
-            height: "56px",
-            width: {
-              lg: "175px",
-              xs: "80px",
-            },
-            fontSize: {
-              lg: "20px",
-              xs: "14px",
-            },
-          }}
-        >
-          Search
-        </Button>
-      </Box> */}
     </Stack>
   );
 };

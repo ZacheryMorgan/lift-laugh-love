@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Stack } from "@mui/material";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   return (
@@ -29,12 +30,20 @@ const Navbar = () => {
         >
           Home
         </Link>
-        <a href="#search" style={{ textDecoration: "none", color: "#fff" }}>
+        {/* <a href="#search" style={{ textDecoration: "none", color: "#fff" }}>
           Search
-        </a>
-        <a href="#exercises" style={{ textDecoration: "none", color: "#fff" }}>
+        </a> */}
+        <ScrollLink
+          activeClass="active"
+          to="exercises"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={700}
+          style={{ textDecoration: "none", color: "#fff", cursor: "pointer" }}
+        >
           Exercises
-        </a>
+        </ScrollLink>
       </Stack>
     </Stack>
   );

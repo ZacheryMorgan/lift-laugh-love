@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
 
 export default function ScrollToTop() {
   const { pathname } = useLocation();
 
+  const options = {
+    smooth: true,
+    duration: 600,
+  };
+
   useEffect(() => {
-    // "document.documentElement.scrollTo" is the magic for React Router Dom v6
-    document.documentElement.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant", // Optional if you want to skip the scrolling animation
-    });
+    scroll.scrollToTop(options);
   }, [pathname]);
 
   return null;

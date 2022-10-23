@@ -33,7 +33,7 @@ const ExerciseDetail = () => {
     };
 
     fetchVideoData();
-  }, []);
+  }, [name]);
 
   console.log(relatedVideos);
 

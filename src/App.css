@@ -16,6 +16,14 @@ body {
 
 }
 
+.MuiPagination-ul>li>button {
+  color: white
+}
+
+.MuiPagination-ul>li>div {
+  color: white
+}
+
 ::-webkit-scrollbar {
   width: 0px;
 }

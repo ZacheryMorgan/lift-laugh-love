@@ -1,7 +1,7 @@
-import { Box, Stack, Typography, Button, Fab } from "@mui/material";
+import { Box, Typography, Fab } from "@mui/material";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import HeroBannerImage from "../assets/images/banner2.jpg";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 
 const HeroBanner = () => {
   return (
@@ -21,9 +21,6 @@ const HeroBanner = () => {
         },
       }}
     >
-      {/* <Typography color="#fff" fontWeight="600" fontSize="26px">
-        Team Big
-      </Typography> */}
       <Typography
         fontWeight="700"
         mb="23px"
@@ -45,17 +42,7 @@ const HeroBanner = () => {
         Each exercise comes with an example
         <br /> image and multiple videos.
       </Typography>
-      {/* <Button
-        variant="contained"
-        sx={{
-          backgroundColor: "#5478d2",
-          padding: "10px",
-          width: "fit-content",
-        }}
-      >
-        Explore Exercises
-      </Button> */}
-      <Link
+      <ScrollLink
         activeClass="active"
         to="search"
         spy={true}
@@ -73,7 +60,7 @@ const HeroBanner = () => {
           <ArrowCircleDownIcon sx={{ mr: 1 }} />
           Search
         </Fab>
-      </Link>
+      </ScrollLink>
       <Typography
         fontWeight="600"
         color="#5478d2"

@@ -18,7 +18,17 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
 
   const paginate = (e, value) => {
     setCurrentPage(value);
-    window.scrollTo({ top: 1800, behavior: "smooth" });
+
+    const w = window.innerWidth;
+    if (w <= 930) {
+      window.scrollTo({ top: 1000, behavior: "smooth" });
+    } else if (w <= 1240) {
+      window.scrollTo({ top: 1000, behavior: "smooth" });
+    } else if (w <= 1500) {
+      window.scrollTo({ top: 1500, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 1500, behavior: "smooth" });
+    }
   };
 
   useEffect(() => {
@@ -64,11 +74,10 @@ const Exercises = ({ exercises, bodyPart, setExercises }) => {
           <ExerciseCard key={index} exercise={exercise} />
         ))}
       </Stack>
-      <Stack alignItems="center">
+      <Stack alignItems="center" marginTop="35px">
         {exercises.length > 9 ? (
           <Pagination
-            color="standard"
-            shape="rounded"
+            color="primary"
             defaultPage={1}
             count={Math.ceil(exercises.length / exercisesPerPage)}
             page={currentPage}
