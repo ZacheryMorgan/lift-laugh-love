@@ -1,4 +1,4 @@
-# Exercise App
+# Lift, Laugh, Love Exercise App
 
 ## Features
 - Displays over 1,000 exercises with information and images for each.
