@@ -84,7 +84,7 @@ const SearchExercises = ({ setExercises }) => {
           },
         }}
       >
-        Search Exercises by Any Combination of Body Part, Target Muscle, or
+        Filter Exercises by Any Combination of Body Part, Target Muscle, or
         Equipment Required.
       </Typography>
       <DropdownExercises

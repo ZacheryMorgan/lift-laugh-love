@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiData } from "../utils/apiData";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Fab } from "@mui/material";
 import TargetImage from "../assets/icons/target.png";
 import EquipmentImage from "../assets/icons/dumbbell.png";
 import BodyPartImage from "../assets/icons/body.png";
 
 import { fetchData, youtubeOptions } from "../utils/fetchData";
 import ExerciseVideo from "../components/ExerciseVideo";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+
+import { Link as ScrollLink } from "react-scroll";
 
 const ExerciseDetail = () => {
   const { id } = useParams();
@@ -35,18 +38,6 @@ const ExerciseDetail = () => {
     fetchVideoData();
   }, [name]);
 
-  console.log(relatedVideos);
-
-  const relatedVideosElements = relatedVideos.map((video, index) => (
-    <ExerciseVideo
-      key={index}
-      thumbnail={video.thumbnails[0].url}
-      publishedTimeText={video.publishedTimeText}
-      title={video.title}
-      videoId={video.videoId}
-    ></ExerciseVideo>
-  ));
-
   const workoutStyling = {
     fontWeight: 500,
     fontSize: "25px",
@@ -64,6 +55,22 @@ const ExerciseDetail = () => {
     height: "90px",
     width: "90px",
   };
+
+  const imageStyling = {
+    boxShadow: "6px 6px 6px #1a1c1d",
+    borderRadius: "7px",
+  };
+
+  const relatedVideosElements = relatedVideos.map((video, index) => (
+    <ExerciseVideo
+      key={index}
+      thumbnail={video.thumbnails[0].url}
+      publishedTimeText={video.publishedTimeText}
+      title={video.title}
+      videoId={video.videoId}
+      style={imageStyling}
+    ></ExerciseVideo>
+  ));
 
   return (
     <div>
@@ -91,10 +98,15 @@ const ExerciseDetail = () => {
           },
         }}
       >
-        <img className="detail-image" src={gifUrl} alt={`${name}`} />
+        <img
+          style={imageStyling}
+          className="detail-image"
+          src={gifUrl}
+          alt={`${name}`}
+        />
         <Stack
           direction="column"
-          gap="120px"
+          gap="40px"
           sx={{
             alignSelf: {
               lg: "flex-start",
@@ -125,6 +137,26 @@ const ExerciseDetail = () => {
             {name}
           </Typography>
           <Stack gap="60px">
+            <ScrollLink
+              activeClass="active"
+              to="videos"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={700}
+              sx={{ width: "fit-content" }}
+            >
+              <Fab
+                variant="extended"
+                color="primary"
+                sx={{
+                  width: "fit-content",
+                }}
+              >
+                <ArrowCircleDownIcon sx={{ mr: 1 }} />
+                Find Videos
+              </Fab>
+            </ScrollLink>
             <Typography sx={workoutStyling}>
               <div style={iconStyling}>
                 <img src={BodyPartImage} alt="Body Part" height="50px" />
@@ -152,6 +184,7 @@ const ExerciseDetail = () => {
         fontSize="36px"
         textTransform="capitalize"
         marginBottom="25px"
+        marginTop="40px"
       >
         Watch videos for {name}
       </Typography>
@@ -161,6 +194,8 @@ const ExerciseDetail = () => {
         </Typography>
       ) : (
         <Stack
+          justifyItems="center"
+          id="videos"
           display="grid"
           rowGap="30px"
           columnGap="8px"
