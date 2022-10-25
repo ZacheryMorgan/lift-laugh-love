@@ -12,7 +12,7 @@ const ExerciseCard = ({ exercise }) => {
       >
         <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
       </div>
-      <Stack direction="row">
+      <Stack direction="row" sx={{ paddingTop: "2px" }}>
         <Button
           sx={{
             ml: "32px",

@@ -38,7 +38,6 @@ body {
   right: 40px;
   top: 0px;
   width: 700px;
-  /* height: 900px; */
   box-shadow: 6px 6px 6px #1a1c1d;
   margin-top: -280px;
   border-bottom-left-radius: 150px;
@@ -49,7 +48,7 @@ body {
   width: 400px;
   height: 445px;
   background: #fff;
-  border-top: 4px solid #FF2625;
+  border-top: 4px solid #5478d2;
   border-bottom-left-radius: 20px;
   text-decoration: none;
   display: flex;

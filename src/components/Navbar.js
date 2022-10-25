@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* <a href="#search" style={{ textDecoration: "none", color: "#fff" }}>
           Search
         </a> */}
-        <ScrollLink
+        {/* <ScrollLink
           activeClass="active"
           to="exercises"
           spy={true}
@@ -43,7 +43,7 @@ const Navbar = () => {
           style={{ textDecoration: "none", color: "#fff", cursor: "pointer" }}
         >
           Exercises
-        </ScrollLink>
+        </ScrollLink> */}
       </Stack>
     </Stack>
   );

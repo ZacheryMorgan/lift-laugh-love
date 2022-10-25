@@ -77,8 +77,17 @@ const DropdownExercises = ({
         }}
       >
         <FormControl fullWidth sx={{ marginRight: "10px" }}>
-          <InputLabel id="bodypart-select-label">Body Part</InputLabel>
+          <InputLabel
+            id="bodypart-select-label"
+            style={{ color: "white", fontWeight: "600" }}
+          >
+            Body Part
+          </InputLabel>
           <Select
+            style={{
+              backgroundColor: "#226cb6",
+              color: "white",
+            }}
             labelId="bodypart-select-label"
             id="bodypart-select"
             value={selectedBodyPart}
@@ -95,8 +104,17 @@ const DropdownExercises = ({
           </Select>
         </FormControl>
         <FormControl fullWidth sx={{ marginRight: "10px" }}>
-          <InputLabel id="target-select-label">Target</InputLabel>
+          <InputLabel
+            id="target-select-label"
+            style={{ color: "white", fontWeight: "600" }}
+          >
+            Target
+          </InputLabel>
           <Select
+            style={{
+              backgroundColor: "#226cb6",
+              color: "white",
+            }}
             labelId="target-select-label"
             id="target-select"
             value={selectedTarget}
@@ -113,8 +131,17 @@ const DropdownExercises = ({
           </Select>
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel id="equipment-select-label">Equipment</InputLabel>
+          <InputLabel
+            id="equipment-select-label"
+            style={{ color: "white", fontWeight: "600" }}
+          >
+            Equipment
+          </InputLabel>
           <Select
+            style={{
+              backgroundColor: "#226cb6",
+              color: "white",
+            }}
             labelId="equipment-select-label"
             id="equipment-select"
             value={selectedEquipment}
@@ -131,7 +158,7 @@ const DropdownExercises = ({
           </Select>
         </FormControl>
       </div>
-      <Button onClick={handleClick} variant="contained">
+      <Button onClick={handleClick} variant="contained" color="error">
         Clear Filters
       </Button>
     </div>

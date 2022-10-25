@@ -35,8 +35,8 @@ const HeroBanner = () => {
         Lift, Laugh, Love
       </Typography>
       <Typography fontSize="22px" lineHeight="35px" mb={4}>
-        Search over 1,000 exercises by <br /> target muscle or equipment
-        required.
+        Find exactly what you need with <br />
+        over 1,000 exercises.
       </Typography>
       <Typography fontSize="22px" lineHeight="35px" mb={4}>
         Each exercise comes with an example
