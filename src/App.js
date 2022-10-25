@@ -7,6 +7,7 @@ import ExerciseDetail from "./pages/ExerciseDetail";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/exercise/:id" element={<ExerciseDetail />} />
       </Routes>
       <Footer />
+      <ScrollToTop />
     </Box>
   );
 };
